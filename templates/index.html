@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Донат на сервер</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Донат на сервер</h1>
+        <form action="/donate" method="post">
+            <input type="text" name="nickname" placeholder="Ваш нікнейм" required><br>
+            <select name="amount" required>
+                {% for amount, rank in tiers.items() %}
+                    <option value="{{ amount }}">{{ rank.capitalize() }} — {{ amount }} грн</option>
+                {% endfor %}
+            </select><br>
+            <button type="submit">🔍 Перевірити оплату</button>
+        </form>
+
+        <form action="/generate_invoice" method="post">
+            <input type="hidden" name="nickname" value="" id="hidden-nick">
+            <input type="hidden" name="amount" value="" id="hidden-amount">
+            <button type="submit" onclick="syncFields()">💳 Отримати рахунок Monobank</button>
+        </form>
+    </div>
+
+    <script>
+        function syncFields() {
+            const nick = document.querySelector('input[name="nickname"]').value;
+            const amount = document.querySelector('select[name="amount"]').value;
+            document.getElementById('hidden-nick').value = nick;
+            document.getElementById('hidden-amount').value = amount;
+        }
+    </script>
+</body>
+</html>

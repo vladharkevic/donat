@@ -1,0 +1,36 @@
+
+body {
+    background: linear-gradient(135deg, #1a0000, #330000, #990000);
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 0 0 15px red;
+}
+
+input, select, button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 90%;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+}
